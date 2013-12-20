@@ -93,7 +93,7 @@
 	
     //set secondary clock
     [self updateClock];
-	[NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(updateClock) userInfo:nil repeats:YES];
+	[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateClock) userInfo:nil repeats:YES];
 }
 
 - (void)updateClock {
