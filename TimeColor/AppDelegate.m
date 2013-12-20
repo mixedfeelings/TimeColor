@@ -89,14 +89,21 @@
     _brown = [NSColor colorWithCalibratedRed:.59 green:.45 blue:.33 alpha:1.0f];
     _ochre = [NSColor colorWithCalibratedRed:.81 green:.78 blue:.69 alpha:1.0f];
     _beige = [NSColor colorWithCalibratedRed:.83 green:.72 blue:.49 alpha:1.0f];
-    
-    //set statusbar face
-    [self updateFace];
-	[NSTimer scheduledTimerWithTimeInterval:3600 target:self selector:@selector(updateFace) userInfo:nil repeats:YES];
 	
     //set secondary clock
     [self updateClock];
 	[NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(updateClock) userInfo:nil repeats:YES];
+}
+
+- (void)updateClock {
+
+    //update secondary clock menu
+    NSDate *date = [NSDate date];
+	_dateMenuItem.title = [_dateFormatter stringFromDate:date];
+    
+    //set statusbar face
+    [self updateFace];
+    
 }
 
 - (void)updateFace {
@@ -128,7 +135,7 @@
     } else if ([_dateString isEqualToString:(@"12")]) {
         _color = _yellow;
     }
-
+    
     //set face attributes
     [_attributedString replaceCharactersInRange:NSMakeRange(0, _attributedString.string.length) withString:_face];
 	[_attributedString setAttributes:@{
@@ -139,15 +146,7 @@
     //display face
 	_statusItem.attributedTitle = _attributedString;
     
-     //NSLog (@"time: %@", _dateString);
-}
-
-- (void)updateClock {
-
-    //update secondary clock menu
-    NSDate *date = [NSDate date];
-	_dateMenuItem.title = [_dateFormatter stringFromDate:date];
-    
+    //NSLog (@"time: %@", _dateString);
 }
 
 - (void)terminateApp {
