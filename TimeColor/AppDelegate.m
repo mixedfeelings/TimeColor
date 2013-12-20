@@ -57,10 +57,15 @@
 	_statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
 	_statusItem.highlightMode = YES;
 	_statusItem.menu = [[NSMenu alloc] init];
-	
 	_dateMenuItem = [[NSMenuItem alloc] init];
-	_dateMenuItem.enabled = NO;
+	_dateMenuItem.enabled = YES;
+    _quitMenuItem = [[NSMenuItem alloc] init];
+    _quitMenuItem.enabled = YES;
+    _quitMenuItem.title = @"Quit";
+    _quitMenuItem.action = @selector(terminateApp);
+    
 	[_statusItem.menu addItem:_dateMenuItem];
+    [_statusItem.menu addItem:_quitMenuItem];
 	
 	_attributedString = [[NSMutableAttributedString alloc] init];
 	
@@ -70,6 +75,7 @@
 	_dateFormatter.dateFormat = @"hh:mm a";
     
 	_font = [NSFont menuBarFontOfSize:34];
+    _face = @"\u25CF";
 
     _yellow = [NSColor colorWithCalibratedRed:.94 green:.91 blue:.47 alpha:1.0f];
     _orange = [NSColor colorWithCalibratedRed:.88 green:.71 blue:.45 alpha:1.0f];
@@ -84,10 +90,11 @@
     _ochre = [NSColor colorWithCalibratedRed:.81 green:.78 blue:.69 alpha:1.0f];
     _beige = [NSColor colorWithCalibratedRed:.83 green:.72 blue:.49 alpha:1.0f];
     
-    
+    //set statusbar face
     [self updateFace];
-	[NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(updateFace) userInfo:nil repeats:YES];
+	[NSTimer scheduledTimerWithTimeInterval:3600 target:self selector:@selector(updateFace) userInfo:nil repeats:YES];
 	
+    //set secondary clock
     [self updateClock];
 	[NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(updateClock) userInfo:nil repeats:YES];
 }
@@ -95,7 +102,7 @@
 - (void)updateFace {
     _dateString = [_timeFormatter stringFromDate:[NSDate date]];
     
-    //set color based on hour
+    //set face color based on hour
     if ([_dateString isEqualToString:(@"01")]) {
         _color = _orange;
     } else if ([_dateString isEqualToString:(@"02")]) {
@@ -121,20 +128,18 @@
     } else if ([_dateString isEqualToString:(@"12")]) {
         _color = _yellow;
     }
-    
-    _face = @"\u25CF";
 
-    
+    //set face attributes
     [_attributedString replaceCharactersInRange:NSMakeRange(0, _attributedString.string.length) withString:_face];
 	[_attributedString setAttributes:@{
                                        NSFontAttributeName: _font,
                                        NSForegroundColorAttributeName: _color,
                                        } range:NSMakeRange(0, _attributedString.string.length)];
 	
+    //display face
 	_statusItem.attributedTitle = _attributedString;
     
-    
-     NSLog (@"time: %@", _dateString);
+     //NSLog (@"time: %@", _dateString);
 }
 
 - (void)updateClock {
@@ -142,13 +147,11 @@
     //update secondary clock menu
     NSDate *date = [NSDate date];
 	_dateMenuItem.title = [_dateFormatter stringFromDate:date];
-    _quitMenuItem.title = @"Quit";
-    _quitMenuItem.action = @selector(terminateApp);
-    
     
 }
 
 - (void)terminateApp {
+    exit(0);
 }
 
 @end
