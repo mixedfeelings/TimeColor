@@ -23,6 +23,7 @@
 @interface AppDelegate () {
 	NSStatusItem *_statusItem;
 	NSMenuItem *_dateMenuItem;
+    NSMenuItem *_quitMenuItem;
 	NSMenuItem *_timezoneMenuItem;
 	NSMutableAttributedString *_attributedString;
 	
@@ -64,13 +65,11 @@
 	_attributedString = [[NSMutableAttributedString alloc] init];
 	
 	_timeFormatter = [[NSDateFormatter alloc] init];
-	//_timeFormatter.dateFormat = @"EEE hh:mm a";
     _timeFormatter.dateFormat = @"hh";
 	_dateFormatter = [[NSDateFormatter alloc] init];
-	_dateFormatter.dateFormat = @"E, hh:mm:ss a";
+	_dateFormatter.dateFormat = @"hh:mm a";
     
 	_font = [NSFont menuBarFontOfSize:34];
-	//_color = [NSColor colorWithCalibratedWhite:0.7f alpha:1];
 
     _yellow = [NSColor colorWithCalibratedRed:.94 green:.91 blue:.47 alpha:1.0f];
     _orange = [NSColor colorWithCalibratedRed:.88 green:.71 blue:.45 alpha:1.0f];
@@ -86,27 +85,15 @@
     _beige = [NSColor colorWithCalibratedRed:.83 green:.72 blue:.49 alpha:1.0f];
     
     
-    
-    _face = @"\u25CF";
-
-    
-	[self updateClock];
-	[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateClock) userInfo:nil repeats:YES];
+    [self updateFace];
+	[NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(updateFace) userInfo:nil repeats:YES];
+	
+    [self updateClock];
+	[NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(updateClock) userInfo:nil repeats:YES];
 }
 
 - (void)updateFace {
-    
-}
-
-- (void)updateClock {
     _dateString = [_timeFormatter stringFromDate:[NSDate date]];
-    
-    NSDate *date = [NSDate date];
-	_dateMenuItem.title = [_dateFormatter stringFromDate:date];
-	
-	//[_attributedString replaceCharactersInRange:NSMakeRange(0, _attributedString.string.length) withString:[_timeFormatter stringFromDate:date]];
-    
-    
     
     //set color based on hour
     if ([_dateString isEqualToString:(@"01")]) {
@@ -135,6 +122,8 @@
         _color = _yellow;
     }
     
+    _face = @"\u25CF";
+
     
     [_attributedString replaceCharactersInRange:NSMakeRange(0, _attributedString.string.length) withString:_face];
 	[_attributedString setAttributes:@{
@@ -144,10 +133,22 @@
 	
 	_statusItem.attributedTitle = _attributedString;
     
-   // NSLog (@"color: %@", _color);
-   // NSLog (@"time: %@", _dateString);
-
     
+     NSLog (@"time: %@", _dateString);
+}
+
+- (void)updateClock {
+
+    //update secondary clock menu
+    NSDate *date = [NSDate date];
+	_dateMenuItem.title = [_dateFormatter stringFromDate:date];
+    _quitMenuItem.title = @"Quit";
+    _quitMenuItem.action = @selector(terminateApp);
+    
+    
+}
+
+- (void)terminateApp {
 }
 
 @end
