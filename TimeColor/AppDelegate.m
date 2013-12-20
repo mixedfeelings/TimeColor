@@ -33,6 +33,7 @@
 	
 	NSFont *_font;
 	NSColor *_color;
+    NSColor *_color2;
     NSColor *_yellow;
     NSColor *_orange;
     NSColor *_pink;
@@ -112,28 +113,40 @@
     //set face color based on hour
     if ([_dateString isEqualToString:(@"01")]) {
         _color = _orange;
+        _color2 = _pink;
     } else if ([_dateString isEqualToString:(@"02")]) {
         _color = _pink;
+        _color2 = _red;
     } else if ([_dateString isEqualToString:(@"03")]) {
         _color = _red;
+        _color2 = _lilac;
     } else if ([_dateString isEqualToString:(@"04")]) {
         _color = _lilac;
+        _color2 = _violet;
     } else if ([_dateString isEqualToString:(@"05")]) {
         _color = _violet;
+        _color2 = _blue;
     } else if ([_dateString isEqualToString:(@"06")]) {
         _color = _blue;
+        _color2 = _green;
     } else if ([_dateString isEqualToString:(@"07")]) {
         _color = _green;
+        _color2 = _turquoise;
     } else if ([_dateString isEqualToString:(@"08")]) {
         _color = _turquoise;
+        _color2 = _brown;
     } else if ([_dateString isEqualToString:(@"09")]) {
         _color = _brown;
+        _color2 = _ochre;
     } else if ([_dateString isEqualToString:(@"10")]) {
         _color = _ochre;
+        _color2 = _beige;
     } else if ([_dateString isEqualToString:(@"11")]) {
         _color = _beige;
+        _color2 = _yellow;
     } else if ([_dateString isEqualToString:(@"12")]) {
         _color = _yellow;
+        _color2 = _orange;
     }
     
     //set face attributes
