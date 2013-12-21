@@ -5,21 +5,8 @@
 //  Created by George Wietor on 12/19/13.
 //  Copyright (c) 2013 Issue Press. All rights reserved.
 //
-// 12:00 yellow .94 .91 .47
-// 1:00 orange .88 .71 .45
-// 2:00 pink .84 .73 .70
-// 3:00 red .74 .37 .34
-// 4:00 lilac .73 .34 .45
-// 5:00 violet .37 .16 .28
-// 6:00 blue .09 .19 .39
-// 7:00 green .17 .36 .24
-// 8:00 turquoise .29 .6 .67
-// 9:00 brown .59 .45 .33
-// 10:00 ochre .81 .78 .69
-// 11:00 beige .83 .72 .49
 
 #import "AppDelegate.h"
-//#import <QuartzCore/QuartzCore.h>
 
 @interface AppDelegate () {
 	NSStatusItem *_statusItem;
@@ -52,6 +39,7 @@
     NSString *_face;
     NSString *_dateString;
     NSString *_minuteString;
+    NSShadow *shadowDic;
 
 }
 
@@ -84,19 +72,24 @@
     
 	_font = [NSFont menuBarFontOfSize:34];
     _face = @"\u25CF";
+    
+    shadowDic=[[NSShadow alloc] init];
+    [shadowDic setShadowBlurRadius:5.0];
+    [shadowDic setShadowColor:[NSColor whiteColor]];
+    [shadowDic setShadowOffset:CGSizeMake(0, 0)];
 
-    _yellow = [NSColor colorWithCalibratedRed:.94 green:.91 blue:.47 alpha:1.0f];
-    _orange = [NSColor colorWithCalibratedRed:.88 green:.71 blue:.45 alpha:1.0f];
-    _pink = [NSColor colorWithCalibratedRed:.84 green:.73 blue:.70 alpha:1.0f];
-    _red = [NSColor colorWithCalibratedRed:.74 green:.37 blue:.34 alpha:1.0f];
-    _lilac = [NSColor colorWithCalibratedRed:.73 green:.34 blue:.45 alpha:1.0f];
-    _violet = [NSColor colorWithCalibratedRed:.37 green:.16 blue:.28 alpha:1.0f];
-    _blue = [NSColor colorWithCalibratedRed:.09 green:.19 blue:.39 alpha:1.0f];
-    _green = [NSColor colorWithCalibratedRed:.17 green:.36 blue:.24 alpha:1.0f];
-    _turquoise = [NSColor colorWithCalibratedRed:.29 green:.6 blue:.67 alpha:1.0f];
-    _brown = [NSColor colorWithCalibratedRed:.59 green:.45 blue:.33 alpha:1.0f];
-    _ochre = [NSColor colorWithCalibratedRed:.81 green:.78 blue:.69 alpha:1.0f];
-    _beige = [NSColor colorWithCalibratedRed:.83 green:.72 blue:.49 alpha:1.0f];
+    _yellow = [NSColor colorWithCalibratedRed:1 green:.92 blue:.13 alpha:1.0f];
+    _orange = [NSColor colorWithCalibratedRed:1 green:.49 blue:.09 alpha:1.0f];
+    _pink = [NSColor colorWithCalibratedRed:.99 green:.76 blue:.76 alpha:1.0f];
+    _red = [NSColor colorWithCalibratedRed:.84 green:.13 blue:.18 alpha:1.0f];
+    _lilac = [NSColor colorWithCalibratedRed:1 green:.41 blue:.81 alpha:1.0f];
+    _violet = [NSColor colorWithCalibratedRed:.72 green:.09 blue:.64 alpha:1.0f];
+    _blue = [NSColor colorWithCalibratedRed:.25 green:.25 blue:.72 alpha:1.0f];
+    _green = [NSColor colorWithCalibratedRed:.17 green:.49 blue:.17 alpha:1.0f];
+    _turquoise = [NSColor colorWithCalibratedRed:.02 green:.76 blue:.76 alpha:1.0f];
+    _brown = [NSColor colorWithCalibratedRed:.60 green:.29 blue:.21 alpha:1.0f];
+    _ochre = [NSColor colorWithCalibratedRed:.88 green:.83 blue:.72 alpha:1.0f];
+    _beige = [NSColor colorWithCalibratedRed:.80 green:.60 blue:.41 alpha:1.0f];
 	
     //set secondary clock
     [self updateClock];
@@ -121,11 +114,18 @@
     
     NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
     [f setNumberStyle:NSNumberFormatterDecimalStyle];
+    [f setMaximumFractionDigits:1];
     NSNumber * myNumber = [f numberFromString:_minuteString];
     NSNumber *progresso = [NSNumber numberWithFloat:([myNumber floatValue]/60)];
-    float progress = [progresso floatValue];
+
     
-    NSLog (@"time: %@", progresso);
+    float progress = [progresso floatValue];
+
+    
+    
+    NSLog (@"number: %@", myNumber);
+    NSLog (@"progress: %@", progresso);
+    NSLog (@"progressy: %f", progress);
 
     
     //set face color based on hour
@@ -168,20 +168,26 @@
     }
     
 
-    NSColor *current_color = [_color2 blendedColorWithFraction:progress ofColor:_color];
-
+    NSColor * current_color = [_color blendedColorWithFraction:progress ofColor:_color2];
+    
+    //NSLog (@"color: %@", _color);
+    //NSLog (@"color2: %@", _color2);
+    //NSLog (@"color3: %@", current_color);
+    
+    
     
     //set face attributes
     [_attributedString replaceCharactersInRange:NSMakeRange(0, _attributedString.string.length) withString:_face];
 	[_attributedString setAttributes:@{
                                        NSFontAttributeName: _font,
                                        NSForegroundColorAttributeName: current_color,
+                                       NSShadowAttributeName: shadowDic,
                                        } range:NSMakeRange(0, _attributedString.string.length)];
 	
     //display face
 	_statusItem.attributedTitle = _attributedString;
     
-    NSLog (@"time: %@", _dateString);
+    //NSLog (@"time: %@", _dateString);
 }
 
 
