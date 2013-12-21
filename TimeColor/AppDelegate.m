@@ -70,11 +70,11 @@
 	_dateFormatter = [[NSDateFormatter alloc] init];
 	_dateFormatter.dateFormat = @"hh:mm a";
     
-	_font = [NSFont menuBarFontOfSize:34];
+	_font = [NSFont menuBarFontOfSize:35];
     _face = @"\u25CF";
     
     shadowDic=[[NSShadow alloc] init];
-    [shadowDic setShadowBlurRadius:5.0];
+    [shadowDic setShadowBlurRadius:3.0];
     [shadowDic setShadowColor:[NSColor whiteColor]];
     [shadowDic setShadowOffset:CGSizeMake(0, 0)];
 
