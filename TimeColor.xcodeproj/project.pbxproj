@@ -48,6 +48,7 @@
 		5E0A682B1863DB0E0063E521 /* TimeColorTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TimeColorTests-Info.plist"; sourceTree = "<group>"; };
 		5E0A682D1863DB0E0063E521 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5E0A682F1863DB0E0063E521 /* TimeColorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimeColorTests.m; sourceTree = "<group>"; };
+		5E8174B518657B140086DFDB /* timeColor_icns_src.ai */ = {isa = PBXFileReference; lastKnownFileType = text; path = timeColor_icns_src.ai; sourceTree = "<group>"; };
 		5EC61E63186516B800B171F7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -115,6 +116,7 @@
 		5E0A680B1863DB0D0063E521 /* TimeColor */ = {
 			isa = PBXGroup;
 			children = (
+				5E8174B518657B140086DFDB /* timeColor_icns_src.ai */,
 				5E0A68171863DB0D0063E521 /* AppDelegate.h */,
 				5E0A68181863DB0D0063E521 /* AppDelegate.m */,
 				5E0A681D1863DB0D0063E521 /* Images.xcassets */,
