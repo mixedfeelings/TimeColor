@@ -45,6 +45,7 @@
 
 @end
 
+
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification {
@@ -70,17 +71,17 @@
 	_dateFormatter = [[NSDateFormatter alloc] init];
 	_dateFormatter.dateFormat = @"hh:mm a";
     
-	_font = [NSFont menuBarFontOfSize:35];
+	_font = [NSFont menuBarFontOfSize:34];
     _face = @"\u25CF";
     
     shadowDic=[[NSShadow alloc] init];
-    [shadowDic setShadowBlurRadius:3.0];
+    [shadowDic setShadowBlurRadius:2.0];
     [shadowDic setShadowColor:[NSColor whiteColor]];
     [shadowDic setShadowOffset:CGSizeMake(0, 0)];
 
     _yellow = [NSColor colorWithCalibratedRed:1 green:.92 blue:.13 alpha:1.0f];
     _orange = [NSColor colorWithCalibratedRed:1 green:.49 blue:.09 alpha:1.0f];
-    _pink = [NSColor colorWithCalibratedRed:.99 green:.76 blue:.76 alpha:1.0f];
+    _pink = [NSColor colorWithCalibratedRed:1 green:.76 blue:.76 alpha:1.0f];
     _red = [NSColor colorWithCalibratedRed:.84 green:.13 blue:.18 alpha:1.0f];
     _lilac = [NSColor colorWithCalibratedRed:1 green:.41 blue:.81 alpha:1.0f];
     _violet = [NSColor colorWithCalibratedRed:.72 green:.09 blue:.64 alpha:1.0f];
@@ -123,9 +124,9 @@
 
     
     
-    NSLog (@"number: %@", myNumber);
-    NSLog (@"progress: %@", progresso);
-    NSLog (@"progressy: %f", progress);
+    //NSLog (@"number: %@", myNumber);
+    //NSLog (@"progress: %@", progresso);
+    //NSLog (@"progressy: %f", progress);
 
     
     //set face color based on hour

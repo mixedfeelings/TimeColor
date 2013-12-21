@@ -12,13 +12,11 @@
 		5E0A68121863DB0D0063E521 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E0A68111863DB0D0063E521 /* main.m */; };
 		5E0A68161863DB0D0063E521 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 5E0A68141863DB0D0063E521 /* Credits.rtf */; };
 		5E0A68191863DB0D0063E521 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E0A68181863DB0D0063E521 /* AppDelegate.m */; };
-		5E0A681C1863DB0D0063E521 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E0A681A1863DB0D0063E521 /* MainMenu.xib */; };
 		5E0A681E1863DB0D0063E521 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E0A681D1863DB0D0063E521 /* Images.xcassets */; };
 		5E0A68251863DB0D0063E521 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E0A68241863DB0D0063E521 /* XCTest.framework */; };
 		5E0A68261863DB0D0063E521 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E0A68051863DB0D0063E521 /* Cocoa.framework */; };
 		5E0A682E1863DB0E0063E521 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E0A682C1863DB0E0063E521 /* InfoPlist.strings */; };
 		5E0A68301863DB0E0063E521 /* TimeColorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E0A682F1863DB0E0063E521 /* TimeColorTests.m */; };
-		5EC61E64186516B800B171F7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EC61E63186516B800B171F7 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +42,6 @@
 		5E0A68151863DB0D0063E521 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		5E0A68171863DB0D0063E521 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5E0A68181863DB0D0063E521 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		5E0A681B1863DB0D0063E521 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		5E0A681D1863DB0D0063E521 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5E0A68231863DB0D0063E521 /* TimeColorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimeColorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E0A68241863DB0D0063E521 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -59,7 +56,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5EC61E64186516B800B171F7 /* QuartzCore.framework in Frameworks */,
 				5E0A68061863DB0D0063E521 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -121,7 +117,6 @@
 			children = (
 				5E0A68171863DB0D0063E521 /* AppDelegate.h */,
 				5E0A68181863DB0D0063E521 /* AppDelegate.m */,
-				5E0A681A1863DB0D0063E521 /* MainMenu.xib */,
 				5E0A681D1863DB0D0063E521 /* Images.xcassets */,
 				5E0A680C1863DB0D0063E521 /* Supporting Files */,
 			);
@@ -237,7 +232,6 @@
 				5E0A68101863DB0D0063E521 /* InfoPlist.strings in Resources */,
 				5E0A681E1863DB0D0063E521 /* Images.xcassets in Resources */,
 				5E0A68161863DB0D0063E521 /* Credits.rtf in Resources */,
-				5E0A681C1863DB0D0063E521 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,14 +290,6 @@
 			name = Credits.rtf;
 			sourceTree = "<group>";
 		};
-		5E0A681A1863DB0D0063E521 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5E0A681B1863DB0D0063E521 /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
 		5E0A682C1863DB0E0063E521 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -346,7 +332,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
@@ -378,7 +364,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -391,7 +377,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TimeColor/TimeColor-Prefix.pch";
 				INFOPLIST_FILE = "TimeColor/TimeColor-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -405,7 +391,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TimeColor/TimeColor-Prefix.pch";
 				INFOPLIST_FILE = "TimeColor/TimeColor-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
