@@ -13,3 +13,9 @@
 @property (assign) IBOutlet NSWindow *window;
 
 @end
+
+@interface NSColor (Gradient)
+
++ (NSColor *)my_gradientColorWithGradient:(NSGradient *)gradient;
+
+@end

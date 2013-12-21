@@ -7,6 +7,35 @@
 //
 
 #import "AppDelegate.h"
+#import <objc/runtime.h>
+
+static void DrawGradientPattern(void * info, CGContextRef context)
+{
+    NSGraphicsContext *currentContext = [NSGraphicsContext currentContext];
+    CGRect clipRect = CGContextGetClipBoundingBox(context);
+    [NSGraphicsContext setCurrentContext:[NSGraphicsContext graphicsContextWithGraphicsPort:context flipped:NO]];
+    NSGradient *gradient = (__bridge NSGradient *)info;
+    [gradient drawInRect:NSRectFromCGRect(clipRect) angle:60.0];
+    [NSGraphicsContext setCurrentContext:currentContext];
+}
+
+@implementation NSColor (Gradient)
+
++ (NSColor *)my_gradientColorWithGradient:(NSGradient *)gradient
+{
+    CGColorSpaceRef colorSpace = CGColorSpaceCreatePattern(NULL);
+    CGPatternCallbacks callbacks;
+    callbacks.drawPattern = &DrawGradientPattern;
+    callbacks.releaseInfo = NULL;
+    CGPatternRef pattern = CGPatternCreate((__bridge void *)(gradient), CGRectMake(0, 0, CGFLOAT_MAX, CGFLOAT_MAX), CGAffineTransformIdentity, CGFLOAT_MAX, CGFLOAT_MAX, kCGPatternTilingConstantSpacing, true, &callbacks);
+    const CGFloat components[4] = {1.0, 1.0, 1.0, 1.0};
+    CGColorRef cgColor = CGColorCreateWithPattern(colorSpace, pattern, components);
+    CGColorSpaceRelease(colorSpace);
+    NSColor *color = [NSColor colorWithCGColor:cgColor];
+    objc_setAssociatedObject(color, "gradient", gradient, OBJC_ASSOCIATION_RETAIN);
+    return color;
+}
+@end
 
 @interface AppDelegate () {
 	NSStatusItem *_statusItem;
@@ -40,7 +69,7 @@
     NSString *_dateString;
     NSString *_minuteString;
     NSShadow *shadowDic;
-
+    
 }
 
 @end
@@ -97,101 +126,105 @@
 	[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateClock) userInfo:nil repeats:YES];
 }
 
-- (void)updateClock {
 
-    //update secondary clock menu
-    NSDate *date = [NSDate date];
-	_dateMenuItem.title = [_dateFormatter stringFromDate:date];
-    
-    //set statusbar face
-    [self updateFace];
-    
-}
-
-- (void)updateFace {
-    _dateString = [_timeFormatter stringFromDate:[NSDate date]];
-    _minuteString = [_minuteFormatter stringFromDate:[NSDate date]];
-    
-    
-    NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
-    [f setNumberStyle:NSNumberFormatterDecimalStyle];
-    [f setMaximumFractionDigits:1];
-    NSNumber * myNumber = [f numberFromString:_minuteString];
-    NSNumber *progresso = [NSNumber numberWithFloat:([myNumber floatValue]/60)];
-
-    
-    float progress = [progresso floatValue];
-
-    
-    
-    //NSLog (@"number: %@", myNumber);
-    //NSLog (@"progress: %@", progresso);
-    //NSLog (@"progressy: %f", progress);
-
-    
-    //set face color based on hour
-    if ([_dateString isEqualToString:(@"01")]) {
-        _color = _orange;
-        _color2 = _pink;
-    } else if ([_dateString isEqualToString:(@"02")]) {
-        _color = _pink;
-        _color2 = _red;
-    } else if ([_dateString isEqualToString:(@"03")]) {
-        _color = _red;
-        _color2 = _lilac;
-    } else if ([_dateString isEqualToString:(@"04")]) {
-        _color = _lilac;
-        _color2 = _violet;
-    } else if ([_dateString isEqualToString:(@"05")]) {
-        _color = _violet;
-        _color2 = _blue;
-    } else if ([_dateString isEqualToString:(@"06")]) {
-        _color = _blue;
-        _color2 = _green;
-    } else if ([_dateString isEqualToString:(@"07")]) {
-        _color = _green;
-        _color2 = _turquoise;
-    } else if ([_dateString isEqualToString:(@"08")]) {
-        _color = _turquoise;
-        _color2 = _brown;
-    } else if ([_dateString isEqualToString:(@"09")]) {
-        _color = _brown;
-        _color2 = _ochre;
-    } else if ([_dateString isEqualToString:(@"10")]) {
-        _color = _ochre;
-        _color2 = _beige;
-    } else if ([_dateString isEqualToString:(@"11")]) {
-        _color = _beige;
-        _color2 = _yellow;
-    } else if ([_dateString isEqualToString:(@"12")]) {
-        _color = _yellow;
-        _color2 = _orange;
-    }
-    
-
-    NSColor * current_color = [_color blendedColorWithFraction:progress ofColor:_color2];
-    
-    //NSLog (@"color: %@", _color);
-    //NSLog (@"color2: %@", _color2);
-    //NSLog (@"color3: %@", current_color);
-    
-    
-    
-    //set face attributes
-    [_attributedString replaceCharactersInRange:NSMakeRange(0, _attributedString.string.length) withString:_face];
-	[_attributedString setAttributes:@{
-                                       NSFontAttributeName: _font,
-                                       NSForegroundColorAttributeName: current_color,
-                                       NSShadowAttributeName: shadowDic,
-                                       } range:NSMakeRange(0, _attributedString.string.length)];
-	
-    //display face
-	_statusItem.attributedTitle = _attributedString;
-    
-    //NSLog (@"time: %@", _dateString);
-}
-
-
+     - (void)updateClock {
+         
+         //update secondary clock menu
+         NSDate *date = [NSDate date];
+         _dateMenuItem.title = [_dateFormatter stringFromDate:date];
+         
+         //set statusbar face
+         [self updateFace];
+         
+     }
+     
+     - (void)updateFace {
+         _dateString = [_timeFormatter stringFromDate:[NSDate date]];
+         _minuteString = [_minuteFormatter stringFromDate:[NSDate date]];
+         
+         
+         NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+         [f setNumberStyle:NSNumberFormatterDecimalStyle];
+         [f setMaximumFractionDigits:1];
+         NSNumber * myNumber = [f numberFromString:_minuteString];
+         NSNumber *progresso = [NSNumber numberWithFloat:([myNumber floatValue]/60)];
+         
+         
+         float progress = [progresso floatValue];
+         
+         
+         
+         //NSLog (@"number: %@", myNumber);
+         //NSLog (@"progress: %@", progresso);
+         //NSLog (@"progressy: %f", progress);
+         
+         
+         //set face color based on hour
+         if ([_dateString isEqualToString:(@"01")]) {
+             _color = _orange;
+             _color2 = _pink;
+         } else if ([_dateString isEqualToString:(@"02")]) {
+             _color = _pink;
+             _color2 = _red;
+         } else if ([_dateString isEqualToString:(@"03")]) {
+             _color = _red;
+             _color2 = _lilac;
+         } else if ([_dateString isEqualToString:(@"04")]) {
+             _color = _lilac;
+             _color2 = _violet;
+         } else if ([_dateString isEqualToString:(@"05")]) {
+             _color = _violet;
+             _color2 = _blue;
+         } else if ([_dateString isEqualToString:(@"06")]) {
+             _color = _blue;
+             _color2 = _green;
+         } else if ([_dateString isEqualToString:(@"07")]) {
+             _color = _green;
+             _color2 = _turquoise;
+         } else if ([_dateString isEqualToString:(@"08")]) {
+             _color = _turquoise;
+             _color2 = _brown;
+         } else if ([_dateString isEqualToString:(@"09")]) {
+             _color = _brown;
+             _color2 = _ochre;
+         } else if ([_dateString isEqualToString:(@"10")]) {
+             _color = _ochre;
+             _color2 = _beige;
+         } else if ([_dateString isEqualToString:(@"11")]) {
+             _color = _beige;
+             _color2 = _yellow;
+         } else if ([_dateString isEqualToString:(@"12")]) {
+             _color = _yellow;
+             _color2 = _orange;
+         }
+         
+         
+         NSColor * current_color = [_color blendedColorWithFraction:progress ofColor:_color2];
+         
+         //NSLog (@"color: %@", _color);
+         //NSLog (@"color2: %@", _color2);
+         //NSLog (@"color3: %@", current_color);
+         
+         NSArray *colors = @[_color2, current_color, _color];
+         NSGradient *gradient = [[NSGradient alloc] initWithColors:colors];
+         NSColor *gradientColor = [NSColor my_gradientColorWithGradient:gradient];
+         [gradientColor set];
+         
+         //set face attributes
+         [_attributedString replaceCharactersInRange:NSMakeRange(0, _attributedString.string.length) withString:_face];
+         [_attributedString setAttributes:@{
+                                            NSFontAttributeName: _font,
+                                            NSForegroundColorAttributeName: gradientColor,
+                                            NSShadowAttributeName: shadowDic,
+                                            } range:NSMakeRange(0, _attributedString.string.length)];
+         
+         //display face
+         _statusItem.attributedTitle = _attributedString;
+         
+         //NSLog (@"time: %@", _dateString);
+     }
+     
+     
 
 - (void)terminateApp {
     exit(0);
