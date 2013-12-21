@@ -18,6 +18,7 @@
 		5E0A68261863DB0D0063E521 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E0A68051863DB0D0063E521 /* Cocoa.framework */; };
 		5E0A682E1863DB0E0063E521 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E0A682C1863DB0E0063E521 /* InfoPlist.strings */; };
 		5E0A68301863DB0E0063E521 /* TimeColorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E0A682F1863DB0E0063E521 /* TimeColorTests.m */; };
+		5EC61E64186516B800B171F7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EC61E63186516B800B171F7 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		5E0A682B1863DB0E0063E521 /* TimeColorTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TimeColorTests-Info.plist"; sourceTree = "<group>"; };
 		5E0A682D1863DB0E0063E521 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5E0A682F1863DB0E0063E521 /* TimeColorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimeColorTests.m; sourceTree = "<group>"; };
+		5EC61E63186516B800B171F7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EC61E64186516B800B171F7 /* QuartzCore.framework in Frameworks */,
 				5E0A68061863DB0D0063E521 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -95,6 +98,7 @@
 		5E0A68041863DB0D0063E521 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5EC61E63186516B800B171F7 /* QuartzCore.framework */,
 				5E0A68051863DB0D0063E521 /* Cocoa.framework */,
 				5E0A68241863DB0D0063E521 /* XCTest.framework */,
 				5E0A68071863DB0D0063E521 /* Other Frameworks */,
@@ -387,6 +391,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TimeColor/TimeColor-Prefix.pch";
 				INFOPLIST_FILE = "TimeColor/TimeColor-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -400,6 +405,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TimeColor/TimeColor-Prefix.pch";
 				INFOPLIST_FILE = "TimeColor/TimeColor-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -464,6 +470,7 @@
 				5E0A68351863DB0E0063E521 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5E0A68361863DB0E0063E521 /* Build configuration list for PBXNativeTarget "TimeColorTests" */ = {
 			isa = XCConfigurationList;
@@ -472,6 +479,7 @@
 				5E0A68381863DB0E0063E521 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

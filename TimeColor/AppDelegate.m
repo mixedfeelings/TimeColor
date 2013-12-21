@@ -19,6 +19,7 @@
 // 11:00 beige .83 .72 .49
 
 #import "AppDelegate.h"
+//#import <QuartzCore/QuartzCore.h>
 
 @interface AppDelegate () {
 	NSStatusItem *_statusItem;
@@ -29,11 +30,13 @@
 	
 	NSDateFormatter *_timeFormatter;
 	NSDateFormatter *_dateFormatter;
+    NSDateFormatter *_minuteFormatter;
 	NSDateFormatter *_timezoneFormatter;
 	
 	NSFont *_font;
 	NSColor *_color;
     NSColor *_color2;
+    NSColor *_currentColor;
     NSColor *_yellow;
     NSColor *_orange;
     NSColor *_pink;
@@ -48,6 +51,8 @@
     NSColor *_beige;
     NSString *_face;
     NSString *_dateString;
+    NSString *_minuteString;
+
 }
 
 @end
@@ -72,6 +77,8 @@
 	
 	_timeFormatter = [[NSDateFormatter alloc] init];
     _timeFormatter.dateFormat = @"hh";
+    _minuteFormatter = [[NSDateFormatter alloc] init];
+	_minuteFormatter.dateFormat = @"mm";
 	_dateFormatter = [[NSDateFormatter alloc] init];
 	_dateFormatter.dateFormat = @"hh:mm a";
     
@@ -109,6 +116,17 @@
 
 - (void)updateFace {
     _dateString = [_timeFormatter stringFromDate:[NSDate date]];
+    _minuteString = [_minuteFormatter stringFromDate:[NSDate date]];
+    
+    
+    NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+    [f setNumberStyle:NSNumberFormatterDecimalStyle];
+    NSNumber * myNumber = [f numberFromString:_minuteString];
+    NSNumber *progresso = [NSNumber numberWithFloat:([myNumber floatValue]/60)];
+    float progress = [progresso floatValue];
+    
+    NSLog (@"time: %@", progresso);
+
     
     //set face color based on hour
     if ([_dateString isEqualToString:(@"01")]) {
@@ -149,18 +167,24 @@
         _color2 = _orange;
     }
     
+
+    NSColor *current_color = [_color2 blendedColorWithFraction:progress ofColor:_color];
+
+    
     //set face attributes
     [_attributedString replaceCharactersInRange:NSMakeRange(0, _attributedString.string.length) withString:_face];
 	[_attributedString setAttributes:@{
                                        NSFontAttributeName: _font,
-                                       NSForegroundColorAttributeName: _color,
+                                       NSForegroundColorAttributeName: current_color,
                                        } range:NSMakeRange(0, _attributedString.string.length)];
 	
     //display face
 	_statusItem.attributedTitle = _attributedString;
     
-    //NSLog (@"time: %@", _dateString);
+    NSLog (@"time: %@", _dateString);
 }
+
+
 
 - (void)terminateApp {
     exit(0);
