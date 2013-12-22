@@ -10,6 +10,9 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
+-(IBAction)toggleLaunchAtLogin:(id)sender;
+@property (assign) IBOutlet NSSegmentedControl *launchAtLoginButton;
+
 @end
 
 @interface NSColor (Gradient)

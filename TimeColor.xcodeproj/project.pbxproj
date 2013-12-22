@@ -17,6 +17,8 @@
 		5E0A68261863DB0D0063E521 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E0A68051863DB0D0063E521 /* Cocoa.framework */; };
 		5E0A682E1863DB0E0063E521 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E0A682C1863DB0E0063E521 /* InfoPlist.strings */; };
 		5E0A68301863DB0E0063E521 /* TimeColorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E0A682F1863DB0E0063E521 /* TimeColorTests.m */; };
+		5EFC315818677E3E00C0657D /* TimeColorHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5EFC31541866C78600C0657D /* TimeColorHelper.app */; };
+		5EFC315B1867875200C0657D /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EFC315A1867875200C0657D /* ServiceManagement.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +45,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		5EFC315718677E1B00C0657D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+				5EFC315818677E3E00C0657D /* TimeColorHelper.app in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		5E0A68021863DB0D0063E521 /* TimeColor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeColor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E0A68051863DB0D0063E521 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -65,6 +80,8 @@
 		5E8174B518657B140086DFDB /* timeColor_icns_src.ai */ = {isa = PBXFileReference; lastKnownFileType = text; path = timeColor_icns_src.ai; sourceTree = "<group>"; };
 		5EC61E63186516B800B171F7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		5EFC314E1866C78500C0657D /* TimeColorHelper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TimeColorHelper.xcodeproj; path = TimeColorHelper/TimeColorHelper.xcodeproj; sourceTree = "<group>"; };
+		5EFC315918677E6700C0657D /* TimeColor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TimeColor.entitlements; sourceTree = "<group>"; };
+		5EFC315A1867875200C0657D /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EFC315B1867875200C0657D /* ServiceManagement.framework in Frameworks */,
 				5E0A68061863DB0D0063E521 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -111,6 +129,7 @@
 		5E0A68041863DB0D0063E521 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5EFC315A1867875200C0657D /* ServiceManagement.framework */,
 				5EC61E63186516B800B171F7 /* QuartzCore.framework */,
 				5E0A68051863DB0D0063E521 /* Cocoa.framework */,
 				5E0A68241863DB0D0063E521 /* XCTest.framework */,
@@ -132,6 +151,7 @@
 		5E0A680B1863DB0D0063E521 /* TimeColor */ = {
 			isa = PBXGroup;
 			children = (
+				5EFC315918677E6700C0657D /* TimeColor.entitlements */,
 				5E8174B518657B140086DFDB /* timeColor_icns_src.ai */,
 				5E0A68171863DB0D0063E521 /* AppDelegate.h */,
 				5E0A68181863DB0D0063E521 /* AppDelegate.m */,
@@ -190,6 +210,7 @@
 				5E0A67FE1863DB0D0063E521 /* Sources */,
 				5E0A67FF1863DB0D0063E521 /* Frameworks */,
 				5E0A68001863DB0D0063E521 /* Resources */,
+				5EFC315718677E1B00C0657D /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -227,6 +248,13 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Issue Press";
 				TargetAttributes = {
+					5E0A68011863DB0D0063E521 = {
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
+					};
 					5E0A68221863DB0D0063E521 = {
 						TestTargetID = 5E0A68011863DB0D0063E521;
 					};
@@ -403,7 +431,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = YES;
+				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -423,6 +451,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TimeColor/TimeColor.entitlements;
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TimeColor/TimeColor-Prefix.pch";
@@ -437,6 +467,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TimeColor/TimeColor.entitlements;
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TimeColor/TimeColor-Prefix.pch";

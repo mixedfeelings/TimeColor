@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <objc/runtime.h>
+#import <ServiceManagement/ServiceManagement.h>
 
 static void DrawGradientPattern(void * info, CGContextRef context)
 {
@@ -201,11 +202,11 @@ static void DrawGradientPattern(void * info, CGContextRef context)
          
          //define colors
          NSColor * current_color = [_color blendedColorWithFraction:progress ofColor:_color2];
-         NSColor * new_color = [_color2 blendedColorWithFraction:progress ofColor:current_color];
+         NSColor * new_color = [current_color blendedColorWithFraction:progress ofColor:_color2];
          NSColor * old_color = [_color blendedColorWithFraction:progress ofColor:current_color];
          
          //define gradient
-         NSArray *colors = @[new_color, current_color, old_color];
+         NSArray *colors = @[new_color, old_color];
          NSGradient *gradient = [[NSGradient alloc] initWithColors:colors];
          NSColor *gradientColor = [NSColor my_gradientColorWithGradient:gradient];
          [gradientColor set];
@@ -224,7 +225,33 @@ static void DrawGradientPattern(void * info, CGContextRef context)
          //NSLog (@"time: %@", _dateString);
      }
      
-     
+@synthesize launchAtLoginButton;
+-(IBAction)toggleLaunchAtLogin:(id)sender
+{
+    int clickedSegment = [sender selectedSegment];
+    if (clickedSegment == 0) { // ON
+        // Turn on launch at login
+        if (!SMLoginItemSetEnabled ((__bridge CFStringRef)@"com.issuepress.TimeColorHelper", YES)) {
+            NSAlert *alert = [NSAlert alertWithMessageText:@"An error ocurred"
+                                             defaultButton:@"OK"
+                                           alternateButton:nil
+                                               otherButton:nil
+                                 informativeTextWithFormat:@"Couldn't add Helper App to launch at login item list."];
+            [alert runModal];
+        }
+    }
+    if (clickedSegment == 1) { // OFF
+        // Turn off launch at login
+        if (!SMLoginItemSetEnabled ((__bridge CFStringRef)@"com.issuepress.TimeColorHelper", NO)) {
+            NSAlert *alert = [NSAlert alertWithMessageText:@"An error ocurred"
+                                             defaultButton:@"OK"
+                                           alternateButton:nil
+                                               otherButton:nil
+                                 informativeTextWithFormat:@"Couldn't remove Helper App from launch at login item list."];
+            [alert runModal];
+        }
+    }
+}
 
 - (void)terminateApp {
     exit(0);

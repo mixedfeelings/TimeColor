@@ -388,6 +388,7 @@
 				GCC_PREFIX_HEADER = "TimeColorHelper/TimeColorHelper-Prefix.pch";
 				INFOPLIST_FILE = "TimeColorHelper/TimeColorHelper-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -401,6 +402,7 @@
 				GCC_PREFIX_HEADER = "TimeColorHelper/TimeColorHelper-Prefix.pch";
 				INFOPLIST_FILE = "TimeColorHelper/TimeColorHelper-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
