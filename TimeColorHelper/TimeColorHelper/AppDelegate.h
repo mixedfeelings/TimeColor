@@ -1,8 +1,8 @@
 //
 //  AppDelegate.h
-//  TimeColor
+//  TimeColorHelper
 //
-//  Created by George Wietor on 12/19/13.
+//  Created by George Wietor on 12/22/13.
 //  Copyright (c) 2013 Issue Press. All rights reserved.
 //
 
@@ -10,10 +10,6 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
-@end
-
-@interface NSColor (Gradient)
-
-+ (NSColor *)my_gradientColorWithGradient:(NSGradient *)gradient;
+@property (assign) IBOutlet NSWindow *window;
 
 @end

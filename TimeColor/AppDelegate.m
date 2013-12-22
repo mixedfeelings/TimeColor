@@ -110,7 +110,8 @@ static void DrawGradientPattern(void * info, CGContextRef context)
 
     _yellow = [NSColor colorWithCalibratedRed:1 green:.92 blue:.13 alpha:1.0f];
     _orange = [NSColor colorWithCalibratedRed:1 green:.49 blue:.09 alpha:1.0f];
-    _pink = [NSColor colorWithCalibratedRed:1 green:.76 blue:.76 alpha:1.0f];
+    //_pink = [NSColor colorWithCalibratedRed:1 green:.76 blue:.76 alpha:1.0f];
+    _pink = [NSColor colorWithCalibratedRed:1 green:.64 blue:.64 alpha:1.0f];
     _red = [NSColor colorWithCalibratedRed:.84 green:.13 blue:.18 alpha:1.0f];
     _lilac = [NSColor colorWithCalibratedRed:1 green:.41 blue:.81 alpha:1.0f];
     _violet = [NSColor colorWithCalibratedRed:.72 green:.09 blue:.64 alpha:1.0f];
@@ -198,14 +199,13 @@ static void DrawGradientPattern(void * info, CGContextRef context)
              _color2 = _orange;
          }
          
-         
+         //define colors
          NSColor * current_color = [_color blendedColorWithFraction:progress ofColor:_color2];
+         NSColor * new_color = [_color2 blendedColorWithFraction:progress ofColor:current_color];
+         NSColor * old_color = [_color blendedColorWithFraction:progress ofColor:current_color];
          
-         //NSLog (@"color: %@", _color);
-         //NSLog (@"color2: %@", _color2);
-         //NSLog (@"color3: %@", current_color);
-         
-         NSArray *colors = @[_color2, current_color, _color];
+         //define gradient
+         NSArray *colors = @[new_color, current_color, old_color];
          NSGradient *gradient = [[NSGradient alloc] initWithColors:colors];
          NSColor *gradientColor = [NSColor my_gradientColorWithGradient:gradient];
          [gradientColor set];
