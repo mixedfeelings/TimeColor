@@ -11,7 +11,48 @@
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
 -(IBAction)toggleLaunchAtLogin:(id)sender;
+
 @property (assign) IBOutlet NSSegmentedControl *launchAtLoginButton;
+@property(assign, nonatomic, getter=isActive) BOOL active;
+@property(assign, nonatomic) BOOL animated;
+
+@property (strong) NSStatusItem * statusItem;
+@property (strong) NSMenuItem * dateMenuItem;
+@property (strong) NSMenuItem * quitMenuItem;
+@property (strong) NSMenuItem * timezoneMenuItem;
+@property (strong) NSMutableAttributedString * attributedString;
+
+@property (strong) NSDateFormatter * timeFormatter;
+@property (strong) NSDateFormatter * dateFormatter;
+@property (strong) NSDateFormatter * minuteFormatter;
+@property (strong) NSDateFormatter * timezoneFormatter;
+
+@property (assign) NSFont * font;
+@property (strong) NSColor * color;
+@property (strong) NSColor * color2;
+@property (assign) NSColor * currentColor;
+@property (strong) NSColor * yellow;
+@property (strong) NSColor * orange;
+@property (strong) NSColor * pink;
+@property (strong) NSColor * red;
+@property (strong) NSColor * lilac;
+@property (strong) NSColor * violet;
+@property (strong) NSColor * blue;
+@property (strong) NSColor * green;
+@property (strong) NSColor * turquoise;
+@property (strong) NSColor * brown;
+@property (strong) NSColor * ochre;
+@property (strong) NSColor * beige;
+@property (strong) NSString * face;
+@property (assign) NSString * dateString;
+@property (assign) NSString * minuteString;
+@property (strong) NSShadow * shadowDic;
+@property (assign) float * progress;
+
+
+- (void)showPopover;
+- (void)showPopoverAnimated:(BOOL)animated;
+- (void)hidePopover;
 
 @end
 

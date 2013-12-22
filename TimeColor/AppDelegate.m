@@ -38,42 +38,6 @@ static void DrawGradientPattern(void * info, CGContextRef context)
 }
 @end
 
-@interface AppDelegate () {
-	NSStatusItem *_statusItem;
-	NSMenuItem *_dateMenuItem;
-    NSMenuItem *_quitMenuItem;
-	NSMenuItem *_timezoneMenuItem;
-	NSMutableAttributedString *_attributedString;
-	
-	NSDateFormatter *_timeFormatter;
-	NSDateFormatter *_dateFormatter;
-    NSDateFormatter *_minuteFormatter;
-	NSDateFormatter *_timezoneFormatter;
-	
-	NSFont *_font;
-	NSColor *_color;
-    NSColor *_color2;
-    NSColor *_currentColor;
-    NSColor *_yellow;
-    NSColor *_orange;
-    NSColor *_pink;
-    NSColor *_red;
-    NSColor *_lilac;
-    NSColor *_violet;
-    NSColor *_blue;
-    NSColor *_green;
-    NSColor *_turquoise;
-    NSColor *_brown;
-    NSColor *_ochre;
-    NSColor *_beige;
-    NSString *_face;
-    NSString *_dateString;
-    NSString *_minuteString;
-    NSShadow *shadowDic;
-    
-}
-
-@end
 
 
 @implementation AppDelegate
@@ -104,10 +68,10 @@ static void DrawGradientPattern(void * info, CGContextRef context)
 	_font = [NSFont menuBarFontOfSize:34];
     _face = @"\u25CF";
     
-    shadowDic=[[NSShadow alloc] init];
-    [shadowDic setShadowBlurRadius:2.0];
-    [shadowDic setShadowColor:[NSColor whiteColor]];
-    [shadowDic setShadowOffset:CGSizeMake(0, 0)];
+    _shadowDic=[[NSShadow alloc] init];
+    [_shadowDic setShadowBlurRadius:2.0];
+    [_shadowDic setShadowColor:[NSColor whiteColor]];
+    [_shadowDic setShadowOffset:CGSizeMake(0, 0)];
 
     _yellow = [NSColor colorWithCalibratedRed:1 green:.92 blue:.13 alpha:1.0f];
     _orange = [NSColor colorWithCalibratedRed:1 green:.49 blue:.09 alpha:1.0f];
@@ -216,7 +180,7 @@ static void DrawGradientPattern(void * info, CGContextRef context)
          [_attributedString setAttributes:@{
                                             NSFontAttributeName: _font,
                                             NSForegroundColorAttributeName: gradientColor,
-                                            NSShadowAttributeName: shadowDic,
+                                            NSShadowAttributeName: _shadowDic,
                                             } range:NSMakeRange(0, _attributedString.string.length)];
          
          //display face
