@@ -19,6 +19,7 @@
 @property (strong) NSStatusItem * statusItem;
 @property (strong) NSMenuItem * dateMenuItem;
 @property (strong) NSMenuItem * quitMenuItem;
+@property (strong) NSMenuItem * settingsMenuItem;
 @property (strong) NSMenuItem * timezoneMenuItem;
 @property (strong) NSMutableAttributedString * attributedString;
 
