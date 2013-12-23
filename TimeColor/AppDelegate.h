@@ -13,15 +13,12 @@
 -(IBAction)toggleLaunchAtLogin:(id)sender;
 
 @property (assign) IBOutlet NSSegmentedControl *launchAtLoginButton;
-@property (assign) IBOutlet NSWindow *settingsWindow;
-
 @property(assign, nonatomic, getter=isActive) BOOL active;
 @property(assign, nonatomic) BOOL animated;
 
 @property (strong) NSStatusItem * statusItem;
 @property (strong) NSMenuItem * dateMenuItem;
 @property (strong) NSMenuItem * quitMenuItem;
-@property (strong) NSMenuItem * settingsMenuItem;
 @property (strong) NSMenuItem * timezoneMenuItem;
 @property (strong) NSMutableAttributedString * attributedString;
 

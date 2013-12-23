@@ -48,17 +48,12 @@ static void DrawGradientPattern(void * info, CGContextRef context)
 	_statusItem.menu = [[NSMenu alloc] init];
 	_dateMenuItem = [[NSMenuItem alloc] init];
 	_dateMenuItem.enabled = YES;
-    _settingsMenuItem = [[NSMenuItem alloc] init];
-    _settingsMenuItem.enabled = YES;
-    _settingsMenuItem.title = @"Settings";
-    _settingsMenuItem.action = @selector(terminateApp);
     _quitMenuItem = [[NSMenuItem alloc] init];
     _quitMenuItem.enabled = YES;
     _quitMenuItem.title = @"Quit";
     _quitMenuItem.action = @selector(terminateApp);
     
 	[_statusItem.menu addItem:_dateMenuItem];
-    [_statusItem.menu addItem:_settingsMenuItem];
     [_statusItem.menu addItem:_quitMenuItem];
 	
 	_attributedString = [[NSMutableAttributedString alloc] init];
@@ -175,7 +170,7 @@ static void DrawGradientPattern(void * info, CGContextRef context)
          NSColor * old_color = [_color blendedColorWithFraction:progress ofColor:current_color];
          
          //define gradient
-         NSArray *colors = @[_color2, new_color, current_color, current_color, old_color, _color];
+         NSArray *colors = @[new_color, old_color];
          NSGradient *gradient = [[NSGradient alloc] initWithColors:colors];
          NSColor *gradientColor = [NSColor my_gradientColorWithGradient:gradient];
          [gradientColor set];
@@ -193,9 +188,8 @@ static void DrawGradientPattern(void * info, CGContextRef context)
          
          //NSLog (@"time: %@", _dateString);
      }
-
+     
 @synthesize launchAtLoginButton;
-
 -(IBAction)toggleLaunchAtLogin:(id)sender
 {
     NSInteger clickedSegment = [sender selectedSegment];
