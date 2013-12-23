@@ -19,6 +19,10 @@
 		5E0A68301863DB0E0063E521 /* TimeColorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E0A682F1863DB0E0063E521 /* TimeColorTests.m */; };
 		5EFC315818677E3E00C0657D /* TimeColorHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5EFC31541866C78600C0657D /* TimeColorHelper.app */; };
 		5EFC315B1867875200C0657D /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EFC315A1867875200C0657D /* ServiceManagement.framework */; };
+		5EFC31651867E98000C0657D /* PopUpController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EFC31631867E98000C0657D /* PopUpController.m */; };
+		5EFC31661867E98000C0657D /* PopUpController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EFC31641867E98000C0657D /* PopUpController.xib */; };
+		5EFC31691867EAB800C0657D /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EFC31681867EAB800C0657D /* Controller.m */; };
+		5EFC316C1867ED4500C0657D /* Menulet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EFC316B1867ED4500C0657D /* Menulet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +86,13 @@
 		5EFC314E1866C78500C0657D /* TimeColorHelper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TimeColorHelper.xcodeproj; path = TimeColorHelper/TimeColorHelper.xcodeproj; sourceTree = "<group>"; };
 		5EFC315918677E6700C0657D /* TimeColor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TimeColor.entitlements; sourceTree = "<group>"; };
 		5EFC315A1867875200C0657D /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		5EFC31621867E98000C0657D /* PopUpController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopUpController.h; sourceTree = "<group>"; };
+		5EFC31631867E98000C0657D /* PopUpController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopUpController.m; sourceTree = "<group>"; };
+		5EFC31641867E98000C0657D /* PopUpController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopUpController.xib; sourceTree = "<group>"; };
+		5EFC31671867EAB800C0657D /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
+		5EFC31681867EAB800C0657D /* Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Controller.m; sourceTree = "<group>"; };
+		5EFC316A1867ED4500C0657D /* Menulet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Menulet.h; sourceTree = "<group>"; };
+		5EFC316B1867ED4500C0657D /* Menulet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Menulet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +166,13 @@
 				5E8174B518657B140086DFDB /* timeColor_icns_src.ai */,
 				5E0A68171863DB0D0063E521 /* AppDelegate.h */,
 				5E0A68181863DB0D0063E521 /* AppDelegate.m */,
+				5EFC316A1867ED4500C0657D /* Menulet.h */,
+				5EFC316B1867ED4500C0657D /* Menulet.m */,
+				5EFC31671867EAB800C0657D /* Controller.h */,
+				5EFC31681867EAB800C0657D /* Controller.m */,
+				5EFC31621867E98000C0657D /* PopUpController.h */,
+				5EFC31631867E98000C0657D /* PopUpController.m */,
+				5EFC31641867E98000C0657D /* PopUpController.xib */,
 				5E0A681D1863DB0D0063E521 /* Images.xcassets */,
 				5E0A680C1863DB0D0063E521 /* Supporting Files */,
 			);
@@ -308,6 +326,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E0A68101863DB0D0063E521 /* InfoPlist.strings in Resources */,
+				5EFC31661867E98000C0657D /* PopUpController.xib in Resources */,
 				5E0A681E1863DB0D0063E521 /* Images.xcassets in Resources */,
 				5E0A68161863DB0D0063E521 /* Credits.rtf in Resources */,
 			);
@@ -330,6 +349,9 @@
 			files = (
 				5E0A68191863DB0D0063E521 /* AppDelegate.m in Sources */,
 				5E0A68121863DB0D0063E521 /* main.m in Sources */,
+				5EFC316C1867ED4500C0657D /* Menulet.m in Sources */,
+				5EFC31651867E98000C0657D /* PopUpController.m in Sources */,
+				5EFC31691867EAB800C0657D /* Controller.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

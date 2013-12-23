@@ -1,29 +1,17 @@
 //
-//  AppDelegate.h
+//  Menulet.h
 //  TimeColor
 //
-//  Created by George Wietor on 12/19/13.
+//  Created by George Wietor on 12/22/13.
 //  Copyright (c) 2013 Issue Press. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
+#import "Controller.h"
 
+@interface Menulet : NSView
 
-@class Menulet;
-@class Controller;
-
-@interface AppDelegate : NSObject <NSApplicationDelegate>
-
--(IBAction)toggleLaunchAtLogin:(id)sender;
-
-@property (assign) IBOutlet NSWindow *window;
-
-@property (assign) IBOutlet NSSegmentedControl *launchAtLoginButton;
-@property(assign, nonatomic, getter=isActive) BOOL active;
-@property(assign, nonatomic) BOOL animated;
-
-@property (nonatomic, strong) Menulet *menulet;
-@property (nonatomic, strong) Controller *controller;
+@property (nonatomic, unsafe_unretained) id<MenuletDelegate> delegate;
 
 @property (strong) NSStatusItem * statusItem;
 @property (strong) NSMenuItem * dateMenuItem;
@@ -58,11 +46,6 @@
 @property (strong) NSShadow * shadowDic;
 @property (assign) float * progress;
 
-
-@end
-
-@interface NSColor (Gradient)
-
-+ (NSColor *)my_gradientColorWithGradient:(NSGradient *)gradient;
+- (void)updateFace;
 
 @end
