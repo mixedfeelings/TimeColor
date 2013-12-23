@@ -8,22 +8,13 @@
 
 #import <Cocoa/Cocoa.h>
 
-
-@class Menulet;
-@class Controller;
-
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
 -(IBAction)toggleLaunchAtLogin:(id)sender;
 
-@property (assign) IBOutlet NSWindow *window;
-
 @property (assign) IBOutlet NSSegmentedControl *launchAtLoginButton;
 @property(assign, nonatomic, getter=isActive) BOOL active;
 @property(assign, nonatomic) BOOL animated;
-
-@property (nonatomic, strong) Menulet *menulet;
-@property (nonatomic, strong) Controller *controller;
 
 @property (strong) NSStatusItem * statusItem;
 @property (strong) NSMenuItem * dateMenuItem;
@@ -58,6 +49,10 @@
 @property (strong) NSShadow * shadowDic;
 @property (assign) float * progress;
 
+
+- (void)showPopover;
+- (void)showPopoverAnimated:(BOOL)animated;
+- (void)hidePopover;
 
 @end
 
