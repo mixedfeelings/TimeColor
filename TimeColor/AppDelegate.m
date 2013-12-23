@@ -192,7 +192,7 @@ static void DrawGradientPattern(void * info, CGContextRef context)
 @synthesize launchAtLoginButton;
 -(IBAction)toggleLaunchAtLogin:(id)sender
 {
-    int clickedSegment = [sender selectedSegment];
+    NSInteger clickedSegment = [sender selectedSegment];
     if (clickedSegment == 0) { // ON
         // Turn on launch at login
         if (!SMLoginItemSetEnabled ((__bridge CFStringRef)@"com.issuepress.TimeColorHelper", YES)) {
