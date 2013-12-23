@@ -49,6 +49,11 @@
 @property (strong) NSShadow * shadowDic;
 @property (assign) float * progress;
 
+
+- (void)showPopover;
+- (void)showPopoverAnimated:(BOOL)animated;
+- (void)hidePopover;
+
 @end
 
 @interface NSColor (Gradient)
