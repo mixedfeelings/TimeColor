@@ -193,8 +193,9 @@ static void DrawGradientPattern(void * info, CGContextRef context)
          
          //NSLog (@"time: %@", _dateString);
      }
-     
+
 @synthesize launchAtLoginButton;
+
 -(IBAction)toggleLaunchAtLogin:(id)sender
 {
     NSInteger clickedSegment = [sender selectedSegment];

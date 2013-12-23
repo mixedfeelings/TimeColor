@@ -13,6 +13,8 @@
 -(IBAction)toggleLaunchAtLogin:(id)sender;
 
 @property (assign) IBOutlet NSSegmentedControl *launchAtLoginButton;
+@property (assign) IBOutlet NSWindow *settingsWindow;
+
 @property(assign, nonatomic, getter=isActive) BOOL active;
 @property(assign, nonatomic) BOOL animated;
 

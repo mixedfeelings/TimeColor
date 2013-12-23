@@ -17,6 +17,7 @@
 		5E0A68261863DB0D0063E521 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E0A68051863DB0D0063E521 /* Cocoa.framework */; };
 		5E0A682E1863DB0E0063E521 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E0A682C1863DB0E0063E521 /* InfoPlist.strings */; };
 		5E0A68301863DB0E0063E521 /* TimeColorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E0A682F1863DB0E0063E521 /* TimeColorTests.m */; };
+		5EDD04191868F3160020DE2E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EDD04181868F3160020DE2E /* MainMenu.xib */; };
 		5EFC315818677E3E00C0657D /* TimeColorHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5EFC31541866C78600C0657D /* TimeColorHelper.app */; };
 		5EFC315B1867875200C0657D /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EFC315A1867875200C0657D /* ServiceManagement.framework */; };
 /* End PBXBuildFile section */
@@ -79,6 +80,7 @@
 		5E0A682F1863DB0E0063E521 /* TimeColorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimeColorTests.m; sourceTree = "<group>"; };
 		5E8174B518657B140086DFDB /* timeColor_icns_src.ai */ = {isa = PBXFileReference; lastKnownFileType = text; path = timeColor_icns_src.ai; sourceTree = "<group>"; };
 		5EC61E63186516B800B171F7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		5EDD04181868F3160020DE2E /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		5EFC314E1866C78500C0657D /* TimeColorHelper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TimeColorHelper.xcodeproj; path = TimeColorHelper/TimeColorHelper.xcodeproj; sourceTree = "<group>"; };
 		5EFC315918677E6700C0657D /* TimeColor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TimeColor.entitlements; sourceTree = "<group>"; };
 		5EFC315A1867875200C0657D /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
@@ -155,6 +157,7 @@
 				5E8174B518657B140086DFDB /* timeColor_icns_src.ai */,
 				5E0A68171863DB0D0063E521 /* AppDelegate.h */,
 				5E0A68181863DB0D0063E521 /* AppDelegate.m */,
+				5EDD04181868F3160020DE2E /* MainMenu.xib */,
 				5E0A681D1863DB0D0063E521 /* Images.xcassets */,
 				5E0A680C1863DB0D0063E521 /* Supporting Files */,
 			);
@@ -310,6 +313,7 @@
 				5E0A68101863DB0D0063E521 /* InfoPlist.strings in Resources */,
 				5E0A681E1863DB0D0063E521 /* Images.xcassets in Resources */,
 				5E0A68161863DB0D0063E521 /* Credits.rtf in Resources */,
+				5EDD04191868F3160020DE2E /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
